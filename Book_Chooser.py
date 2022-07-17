@@ -14,32 +14,39 @@ class Book_Chooser:
                 mood_list.append(i["mood"])
         return (",").join(mood_list)
 
-    def choosing_mood(self):
+    def choosing_mood_if_user_consentment_or_print_a_random_book(self):
         """
         The user  inputs a mood which will be used to choose a book later
         :return: mood which is a string
         """
-        print("Humeurs disponibles:", self.extract_mood())
-        while True:
-            mood = input("De quelle humeur es-tu en ce moment ? ")
-            if mood.isalpha():
-                if mood in self.extract_mood():
-                    return mood
+        yes_or_no = input("Voulez-vous choisir selon une humeur? \t oui/non\n")
+        if yes_or_no.lower() == "oui":
+            print("Humeurs disponibles:", self.extract_mood())
+            while True:
+                mood = input("De quelle humeur es-tu en ce moment ? ")
+                if mood.isalpha():
+                    if mood in self.extract_mood():
+                        return mood
+                    else:
+                        print("Cette humeur n'est pas valide")
+                        continue
                 else:
-                    print("Cette humeur n'est pas valide")
-                    continue
-            else:
-                print("Veuillez n\'entrer que des lettres")
+                    print("Veuillez n\'entrer que des lettres")
+        return -1
 
     def choosing_book(self):
         """
         Main function that calls all the others
         :return: item_choosed, which is an element of the data randomly choosed
         """
-        mood = self.choosing_mood()
-        next_books_sorted = [x for x in next_books if x["mood"] == mood]
-        item_choosed = random.choice(next_books_sorted)
-        print("\nDans ce cas, je te conseille:",item_choosed["titre"], "écrit par", item_choosed["auteur"])
+        mood = self.choosing_mood_if_user_consentment_or_print_a_random_book()
+        if mood != -1:
+            next_books_sorted = [x for x in next_books if x["mood"] == mood]
+            item_choosed = random.choice(next_books_sorted)
+            print("\nDans ce cas, je te conseille:",item_choosed["titre"], "écrit par", item_choosed["auteur"])
+        else:
+            item_choosed = random.choice(next_books)
+            print("\nJe te conseille:", item_choosed["titre"], "écrit par", item_choosed["auteur"])
         return item_choosed
 
     #TODO Ajouter masse de données dans fichier python externe
