@@ -1,5 +1,7 @@
 from data import next_books
 import random
+import requests
+from bs4 import BeautifulSoup
 
 class Book_Chooser:
 
@@ -47,8 +49,17 @@ class Book_Chooser:
         else:
             item_choosed = random.choice(next_books)
             print("\nJe te conseille:", item_choosed["titre"], "écrit par", item_choosed["auteur"])
+            self.printing_informations_about_book(item_choosed["titre"], item_choosed["auteur"])
         return item_choosed
 
-    #TODO Ajouter masse de données dans fichier python externe
+    def printing_informations_about_book(self, title, author):
+        """
+        We want to crawl the internet to find informations about the book chosen, his price for example
+        :return:
+        """
+        repr_title = (" ").join([i for i in title.split(" ") if len(i) > 3])
+        r = requests.get("https://www.google.com/search?q="+ repr_title +" "+ author+"&tbm=shop")
+        print(r.url)
+        print(r.status_code)
     #TODO Générer prix selon différents sites internet puis faire moyenne
 
