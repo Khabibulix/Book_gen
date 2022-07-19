@@ -58,10 +58,9 @@ class Book_Chooser:
         :return:
         """
         repr_title = (" ").join([i for i in title.split(" ") if len(i) > 3])
-        r = requests.get("https://www.google.com/search?q="+ repr_title +" "+ author+"&tbm=shop")
+        r = requests.get("https://www.chasse-aux-livres.fr/search?query="+ repr_title +" "+ author+"&catalog=fr")
         soup = BeautifulSoup(r.text, "html.parser")
-        print(soup)
-        #print(r.url)
-        #print(r.status_code)
+
+
     #TODO Générer prix selon différents sites internet puis faire moyenne
 
