@@ -60,7 +60,6 @@ class Book_Chooser:
         repr_title = (" ").join([i for i in title.split(" ") if len(i) > 3])
         r = requests.get("https://www.chasse-aux-livres.fr/search?query="+ repr_title +" "+ author+"&catalog=fr")
         soup = BeautifulSoup(r.text, "html.parser")
-
-
+        print(r.url)
     #TODO Générer prix selon différents sites internet puis faire moyenne
 
