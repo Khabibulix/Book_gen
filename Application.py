@@ -18,10 +18,10 @@ class Application(Tk):
         #Bottom frame
         bottom_container = Frame(self, width=500, height=300, borderwidth=5, relief="groove")
         bottom_container.place(x=0, y=100)
-        # text_box = Text(self,height=12,width=40)
-        # text_box.pack(expand=True)
-        # text_box.insert("end","Yup")
-        # text_box.config(state='disabled')
+        text_box = Text(bottom_container,height=18,width=60)
+        text_box.pack(expand=True)
+        text_box.insert("end","Yup")
+        text_box.config(state='disabled')
 
         self.geometry("500x400")
         self.title("Book Randomizer")
