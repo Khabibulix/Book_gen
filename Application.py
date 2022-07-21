@@ -8,6 +8,7 @@ class Application(Tk):
         super().__init__()
 
         label = Label(self, text="Let's random the next book I'll read!")
+        label.place(x=50, y=50)
         label.pack()
 
         button = Button(self, text="Push me!", command=bc.choosing_book)
@@ -15,3 +16,4 @@ class Application(Tk):
 
         self.geometry("300x200")
         self.title("Book Randomizer")
+        self.resizable(False,False)
