@@ -9,4 +9,3 @@ V1: Providing a simple book generator to help me choosing the next book that i'l
 <h2> Future improvements:</h2>
     <pre>
     --->   Interacting with the web to grab infos about the desired book
-    --->   GUI with tKinter for it.
