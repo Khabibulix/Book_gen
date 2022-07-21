@@ -2,6 +2,7 @@ from tkinter import Tk, Button, Label, Frame, Text
 from Book_Chooser import Book_Chooser, book_choosed
 
 bc = Book_Chooser()
+book_choosed = str(bc.choosing_book())
 
 class Application(Tk):
     def __init__(self):
@@ -23,7 +24,7 @@ class Application(Tk):
 
         text_for_result = Text(bottom_container, height=1, width=60)
         text_for_result.pack(expand=True)
-        text_for_result.insert("end", "Result here")
+        text_for_result.insert("end", book_choosed)
         text_for_result.config(state='disabled')
 
         text_box_for_url = Text(bottom_container, height=1, width=60)

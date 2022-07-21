@@ -53,17 +53,17 @@ class Book_Chooser:
         #     print("\nDans ce cas, je te conseille:",item_choosed["titre"], "écrit par", item_choosed["auteur"])
         # else:
         item_choosed = random.choice(next_books)
-        book_choosed = "\nJe te conseille:", item_choosed["titre"], "écrit par", item_choosed["auteur"]
-        url = self.printing_informations_about_book(item_choosed["titre"], item_choosed["auteur"])
-        return item_choosed, book_choosed
+        book_choosed = str(item_choosed["titre"]), "par", str(item_choosed["auteur"])
+        #url = self.printing_informations_about_book(item_choosed["titre"], item_choosed["auteur"])
+        return book_choosed
     #
-    def printing_informations_about_book(self, title, author):
-        """
-        We want to crawl the internet to find informations about the book chosen, his price for example
-        :return:
-        """
-        repr_title = (" ").join([i for i in title.split(" ") if len(i) > 3])
-        r = requests.get("https://www.chasse-aux-livres.fr/search?query="+ repr_title +" "+ author+"&catalog=fr")
-        soup = BeautifulSoup(r.text, "html.parser")
-        return r.url
+    # def printing_informations_about_book(self, title, author):
+    #     """
+    #     We want to crawl the internet to find informations about the book chosen, his price for example
+    #     :return:
+    #     """
+    #     repr_title = (" ").join([i for i in title.split(" ") if len(i) > 3])
+    #     r = requests.get("https://www.chasse-aux-livres.fr/search?query="+ repr_title +" "+ author+"&catalog=fr")
+    #     soup = BeautifulSoup(r.text, "html.parser")
+    #     return r.url
 
