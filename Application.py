@@ -2,7 +2,8 @@ from tkinter import Tk, Button, Label, Frame, Text
 from Book_Chooser import Book_Chooser, book_choosed
 
 bc = Book_Chooser()
-book_choosed = str(bc.choosing_book())
+
+book_choosed = (" ").join(bc.choosing_book())
 
 class Application(Tk):
     def __init__(self):
@@ -15,7 +16,7 @@ class Application(Tk):
         label = Label(top_container, text="Let's randomize the next book I'll read -->")
         label.place(x=180, y=25)
 
-        button = Button(top_container, text="Push me!", command=bc.choosing_book, fg="black", bg="lightblue")
+        button = Button(top_container, text="Push me!",command=book_choosed, fg="black", bg="lightblue")
         button.place(x=420, y=23)
 
         #Bottom frame
