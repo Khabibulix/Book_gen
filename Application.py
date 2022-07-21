@@ -1,5 +1,5 @@
 from tkinter import Tk, Button, Label, Frame, Text
-from Book_Chooser import Book_Chooser
+from Book_Chooser import Book_Chooser, book_choosed
 
 bc = Book_Chooser()
 
@@ -21,9 +21,14 @@ class Application(Tk):
         bottom_container = Frame(self, width=500, height=300, borderwidth=5, relief="groove")
         bottom_container.place(x=0, y=110)
 
+        text_for_result = Text(bottom_container, height=1, width=60)
+        text_for_result.pack(expand=True)
+        text_for_result.insert("end", "Result here")
+        text_for_result.config(state='disabled')
+
         text_box_for_url = Text(bottom_container, height=1, width=60)
         text_box_for_url.pack(expand=True)
-        text_box_for_url.insert("end", "Contenu de l'URL ici")
+        text_box_for_url.insert("end", "URL result here")
         text_box_for_url.config(state='disabled')
 
         text_box_for_informations = Text(bottom_container,height=16,width=60)
