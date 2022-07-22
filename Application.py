@@ -38,11 +38,20 @@ class Application(Tk):
         button_delete = Button(top_container, text="Delete!", fg="black", bg="lightblue")
         button_delete.place(x=500, y=23)
 
+        #Function Keybinding
+
+        def delete_all():
+            text_for_result.delete("1.0", "end")
+            text_box_for_url.delete("1.0", "end")
+
         #Keybindings
+
         button.bind('<Button-1>', lambda event:
         text_for_result.insert("end", bc.choosing_book_and_preparing_for_output(),
-        text_box_for_url.insert("end", bc.printing_informations_about_book())))
-        button_delete.bind('<Button-1>', lambda event: text_for_result.delete("1.0", "end"))
+        text_box_for_url.insert("end", bc.printing_informations_about_book()))
+                    )
+
+        button_delete.bind('<Button-1>', lambda event:delete_all())
 
         self.geometry("700x400")
         self.title("Book Randomizer")

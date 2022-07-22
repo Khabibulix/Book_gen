@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup
 
 
 book_choosed = ""
-url = ""
 infos = ""
 
 class Book_Chooser:
