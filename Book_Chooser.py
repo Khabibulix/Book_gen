@@ -41,10 +41,18 @@ class Book_Chooser:
     #                 print("Veuillez n\'entrer que des lettres")
     #     return -1
 
+    def choosing_from_list(self):
+        """
+        Chooses a book from data list
+        :return: item_choosed
+        """
+        item_choosed = random.choice(next_books)
+        return item_choosed
+
     def choosing_book(self):
         """
         Main function that calls all the others
-        :return: item_choosed, which is an element of the data randomly choosed
+        :return: book_choosed which is a data humanly readable for output
         """
         #mood = self.choosing_mood_if_user_consentment_or_print_a_random_book()
         # if mood != -1:
@@ -52,18 +60,19 @@ class Book_Chooser:
         #     item_choosed = random.choice(next_books_sorted)
         #     print("\nDans ce cas, je te conseille:",item_choosed["titre"], "écrit par", item_choosed["auteur"])
         # else:
-        item_choosed = random.choice(next_books)
+        item_choosed = self.choosing_from_list()
         book_choosed = str(item_choosed["titre"]), "par", str(item_choosed["auteur"])
-        #url = self.printing_informations_about_book(item_choosed["titre"], item_choosed["auteur"])
+        self.printing_informations_about_book(item_choosed["titre"], item_choosed["auteur"])
         return (" ").join(book_choosed)
-    #
-    # def printing_informations_about_book(self, title, author):
-    #     """
-    #     We want to crawl the internet to find informations about the book chosen, his price for example
-    #     :return:
-    #     """
-    #     repr_title = (" ").join([i for i in title.split(" ") if len(i) > 3])
-    #     r = requests.get("https://www.chasse-aux-livres.fr/search?query="+ repr_title +" "+ author+"&catalog=fr")
-    #     soup = BeautifulSoup(r.text, "html.parser")
-    #     return r.url
+
+    def printing_informations_about_book(self, title, author):
+        """
+        We want to crawl the internet to find informations about the book chosen, his price for example
+        :return:
+        """
+        repr_title = (" ").join([i for i in title.split(" ") if len(i) > 3])
+        r = requests.get("https://www.chasse-aux-livres.fr/search?query="+ repr_title +" "+ author+"&catalog=fr")
+        soup = BeautifulSoup(r.text, "html.parser")
+        return r.url
+
 
