@@ -55,7 +55,7 @@ class Book_Chooser:
         item_choosed = random.choice(next_books)
         book_choosed = str(item_choosed["titre"]), "par", str(item_choosed["auteur"])
         #url = self.printing_informations_about_book(item_choosed["titre"], item_choosed["auteur"])
-        return book_choosed
+        return (" ").join(book_choosed)
     #
     # def printing_informations_about_book(self, title, author):
     #     """
