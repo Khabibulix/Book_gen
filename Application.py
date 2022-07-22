@@ -18,7 +18,7 @@ class Application(Tk):
 
         text_box_for_url = Text(bottom_container, height=1, width=86)
         text_box_for_url.pack(expand=True)
-        text_box_for_url.config(state='disabled')
+        text_box_for_url.config(state='normal')
 
         text_box_for_informations = Text(bottom_container,height=16,width=86)
         text_box_for_informations.pack(expand=True)
@@ -39,7 +39,9 @@ class Application(Tk):
         button_delete.place(x=500, y=23)
 
         #Keybindings
-        button.bind('<Button-1>', lambda event: text_for_result.insert("end", bc.choosing_book(), print(url)))
+        button.bind('<Button-1>', lambda event:
+        text_for_result.insert("end", bc.choosing_book_and_preparing_for_output(),
+        text_box_for_url.insert("end", bc.printing_informations_about_book())))
         button_delete.bind('<Button-1>', lambda event: text_for_result.delete("1.0", "end"))
 
         self.geometry("700x400")
