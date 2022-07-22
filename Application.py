@@ -1,7 +1,8 @@
 from tkinter import Tk, Button, Label, Frame, Text
-from Book_Chooser import Book_Chooser, url
+from Book_Chooser import Book_Chooser
 
 bc = Book_Chooser()
+bc.choosing_from_list()
 
 class Application(Tk):
     def __init__(self):
@@ -43,6 +44,7 @@ class Application(Tk):
         def delete_all():
             text_for_result.delete("1.0", "end")
             text_box_for_url.delete("1.0", "end")
+
 
         #Keybindings
 
