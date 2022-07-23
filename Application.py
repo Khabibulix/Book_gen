@@ -9,7 +9,7 @@ class Application(Tk):
         super().__init__()
 
         #Bottom frame
-        bottom_container = Frame(self, width=700, height=300, borderwidth=5, relief="groove")
+        bottom_container = Frame(self, width=900, height=300, borderwidth=5, relief="groove")
         bottom_container.place(x=0, y=110)
 
         text_for_result = Text(bottom_container, height=1, width=86)
@@ -50,7 +50,7 @@ class Application(Tk):
 
         button.bind('<Button-1>', lambda event:
         text_for_result.insert("end", bc.choosing_book_and_preparing_for_output(),
-        text_box_for_url.insert("end", bc.printing_informations_about_book()))
+        text_box_for_url.insert("end", bc.printing_price_informations_about_book()))
                     )
 
         button_delete.bind('<Button-1>', lambda event:delete_all())
