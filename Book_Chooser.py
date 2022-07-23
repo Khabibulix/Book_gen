@@ -1,11 +1,17 @@
+import http.cookiejar
+
 from data import next_books
 import random
 import requests
 from bs4 import BeautifulSoup
-import mechanize
+import mechanize #For clicking on links provided with requests searches
 
 item_choosed_backup = ""
 infos = ""
+
+def generate_cookie():
+    cookie = http.cookiejar.FileCookieJar()
+    return cookie
 
 class Book_Chooser:
 
@@ -45,9 +51,12 @@ class Book_Chooser:
         :return: summary
         """
         global item_choosed_backup
-        repr_title = (" ").join([i for i in item_choosed_backup["titre"].split(" ") if len(i) > 3])
-        r = requests.get("https://fr.wikipedia.org/w/index.php?search="+ repr_title + "&title=Sp%C3%A9cial%3ARecherche&ns0=1")
+        r = requests.get("https://www.google.com/search?q="+item_choosed_backup["titre"])
         soup = BeautifulSoup(r.text, "html.parser")
-        print(soup)
+        crawler = mechanize.Browser()
+        crawler.set_cookiejar(generate_cookie())
+        print(r.status_code)
+        print(r.url)
+        print(soup.h1)
 
 
